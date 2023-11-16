@@ -19,8 +19,8 @@ header {
 
 
 main {
-    flex: 1; /* Ensure content takes remaining space */
-    padding: 20px; /* Add some space for the content */
+    flex: 1;
+    padding: 20px;
 }
 
 

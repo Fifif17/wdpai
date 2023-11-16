@@ -1,28 +1,10 @@
-<!DOCTYPE html>
-<html>
+<?php
 
-<head>
+require 'Routing.php';
 
-    <title>WDPAI</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+$path = trim($_SERVER['REQUEST_URI'], '/');
+$path = parse_url($path, PHP_URL_PATH);
 
-</head>
-
-
-<body>
-
-    <?php
-        include('includes/header.php');
-    ?>
-
-    <main>
-        <h1>Hello u beaitiful hooman.</h1>
-    </main>
-    
-    <?php
-        include('includes/footer.php');
-    ?>
-
-</body>
-
-</html>
+Routing::get('index', 'DefaultController');
+Routing::get('login', 'DefaultController');
+Routing::run($path);
