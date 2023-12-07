@@ -7,7 +7,7 @@
 
 <body>
     <div class="container">
-        <div class="login-container">
+        <div class="loginContainer">
             <form class="login" action="login" method="POST">
                 <div class="messages">
                     <?php if(isset($messages)) {

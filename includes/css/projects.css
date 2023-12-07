@@ -1,0 +1,18 @@
+section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2em;
+    padding: 2em;
+    overflow: auto;
+}
+
+section.projectForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.projectForm>form {
+    display: flex;
+    flex-direction: column;
+}
