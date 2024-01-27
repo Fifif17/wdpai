@@ -22,7 +22,7 @@ class ProjectController extends AppController {
 
             $project = new Project($_POST['title'], $_POST['description'], $_FILES['file']['name']);
 
-            // return $this->render('projects', ['messages' => $this->messages]);
+            return $this->render('projects', ['messages' => $this->messages]);
         }
 
 

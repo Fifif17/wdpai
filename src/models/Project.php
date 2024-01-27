@@ -36,3 +36,4 @@ class Project {
         $this->image = $image;
     }
 }
+?>

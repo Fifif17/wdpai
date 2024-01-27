@@ -19,7 +19,7 @@ services:
     volumes:
       - .:/app/
 
-  postgres:
+  db:
     build:
       context: .
       dockerfile: docker/db/Dockerfile
@@ -27,6 +27,7 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data/ 
+
 
 volumes:
   pgdata:
