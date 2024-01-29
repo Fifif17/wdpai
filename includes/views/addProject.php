@@ -1,18 +1,10 @@
-<!DOCTYPE html>
+<?php
 
-<head>
+include_once("includes/visualComponents/beforeContent.php");
 
+?>
 
-<link rel="stylesheet" type="text/css" href="includes/css/style.css">
 <link rel="stylesheet" type="text/css" href="includes/css/projects.css">
-
-<title>LOGIN</title>
-
-
-</head>
-
-
-<body>
 
 <section class="projectForm">
     <h1>UPLOAD</h1>
@@ -33,4 +25,6 @@
 </section>
 
 
-</body>
+<?php
+include_once("includes/visualComponents/afterContent.php");
+?>

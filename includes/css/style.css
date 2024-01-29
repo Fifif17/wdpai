@@ -1,32 +1,112 @@
+:root {
+    --primaryColor: white;
+    --secondaryColor: lightgray;
+
+    --primaryBGColor: #0E4374;
+    --secondaryBGColor: #0097A6;
+
+    --inputBGColor: #A4ABBD;
+
+    --buttonColor: #0F94FA;
+}
+
+html,
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #3BABEA, #000000);
-    background-attachment: fixed;
+    width: 100%;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, var(--primaryBGColor), var(--secondaryBGColor));
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    color: var(--primaryColor);
 }
 
+html {
+    overflow-x: hidden;
+}
+
+.mainContent {
+    width: 80%;
+    /* min-width: 40em; */
+    max-width: 90%;
+    border-radius: 7pt;
+    position: relative;
+    margin: 20pt auto;
+    padding: 5pt;
+}
 
 header {
-    background-color: #333;
+    background-color: #003867;
     color: #fff;
-    padding: 10px;
+    width: 100%;
     text-align: center;
+    margin-top: 0;
+    height: 8vh;
+    padding: 2pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
 }
 
 
 main {
     flex: 1;
-    padding: 20px;
+    padding: 20pt;
+}
+
+input {
+    background-color: var(--inputBGColor);
+    color: white;
+    padding: 15pt 25pt;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+    margin-bottom: 10pt;
+    font-size: 20pt;
+    width: 80%;
 }
 
 
-footer {
-    background-color: #333;
-    color: #fff;
+
+button {
+    background-color: var(--buttonColor);
+    color: white;
+    padding: 15pt 25pt;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+    margin-bottom: 10pt;
+    font-size: 20pt;
+    width: 80%;
     text-align: center;
-    padding: 10px;
+}
+
+input:hover,
+button:hover {
+    opacity:0.9;
+}
+
+input::placeholder{
+    color: lightgray;
+}
+
+a {
+    padding: 10pt;
+    margin: 10pt;
+    color: var(--primaryColor);
+    text-decoration: none;
+}
+
+a:hover {
+    background: var(--secondaryColor);
+}
+
+.no-valid {
+    border: 3px solid red;
+    box-shadow: 0 0 0.2em red;
+    outline: none;
 }

@@ -19,6 +19,12 @@ class AppController {
     }
 
 
+    protected function isLoggedIn() : bool {
+        session_start();
+        return isset($_SESSION['uid']);
+    }
+
+
     protected function render(string $template = null, array $variables = []) {
         $templatePath = 'includes/views/'.$template.'.php';
         $output = 'File not found!';
@@ -32,5 +38,11 @@ class AppController {
         }
 
         print $output;
+    }
+
+
+    protected function redirectTo(string $url) {
+        header("Location: $url");
+        exit;
     }
 }

@@ -1,12 +1,29 @@
-<!DOCTYPE html>
+<?php
+session_start();
 
-<head>
-    <link rel="stylesheet" type="text/css" href="includes/css/style.css">
-    <title>LOGIN</title>
-</head>
+include_once("includes/visualComponents/beforeContent.php");
 
-<body>
-    <div>
-        <span>PLACEHOLDER MAIN PAGE</span>
-    </div>
-</body>
+$db = new Database();
+$stmt = $db->connect()->prepare('SELECT * FROM users');
+$stmt->execute();
+
+$val = $stmt->fetchAll();
+
+// print_r($val);
+
+if (isset($_SESSION['uid'])) {
+    echo $_SESSION['uid'];
+}
+
+?>
+
+
+
+<div>
+    <span>PLACEHOLDER MAIN PAGE</span>
+</div>
+
+
+<?php
+include_once("includes/visualComponents/afterContent.php");
+?>

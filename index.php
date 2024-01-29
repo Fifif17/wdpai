@@ -7,7 +7,10 @@ $path = parse_url($path, PHP_URL_PATH);
 
 Routing::get('', 'DefaultController');
 Routing::get('mainPage', 'DefaultController');
+Routing::get('myAccount', 'DefaultController');
+Routing::get('register', 'SecurityController');
 Routing::get('login', 'SecurityController');
+Routing::get('logout', 'SecurityController');
 Routing::get('addProject', 'ProjectController');
 
 Routing::run($path);
