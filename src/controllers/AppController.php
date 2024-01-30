@@ -47,7 +47,8 @@ class AppController {
     }
 
 
-    protected function redirectTo(string $url) {
+    protected function redirectTo(string $url, array $variables = []) {
+        $_SESSION['messages'] = $variables;
         header("Location: $url");
         exit;
     }

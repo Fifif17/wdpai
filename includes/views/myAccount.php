@@ -4,10 +4,12 @@
 include_once("includes/visualComponents/beforeContent.php");
 ?>
 
-<script type="text/javascript" src="includes/js/setHistory.js" defer></script>
+<script type="text/javascript" src="includes/js/sets.js" defer></script>
 
 <center>
     <div class="logoutContainer">
+        <button class="goBack" onclick="window.history.back();">Go back</button>
+        <br><br>
         <button id="logout" onclick="location.href='logout'">LOGOUT</button>
     </div>
 </center>

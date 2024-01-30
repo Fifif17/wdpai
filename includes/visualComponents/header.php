@@ -1,12 +1,11 @@
 <header>
-    <a href="login">Login</a>
-    <a href="mainPage">Main Page</a>
-    
     <?php
-    if (isset($_SESSION['uid'])) {
-        echo "<a href='myAccount'>My account</a>";
-        echo "<a href='logout'>Logout</a>";
-    }
+        echo "<a href='mainPage'>Main Page</a>";
+        if (isset($_SESSION['uid'])) {
+            echo "<a display='none' href='myAccount'><img class='headImg' src='/includes/assets/profile.png'></a>";
+        } else {
+            echo "<a href='login'>Login</a>";
+            
+        }
     ?>
-    
 </header>

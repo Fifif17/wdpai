@@ -1,0 +1,84 @@
+.learnBar {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 10px;
+    align-items: center;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
+.info img {
+    max-width: 15vw;
+    margin-right: 4em;
+}
+
+.actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wordsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.word {
+    background-color: #4D73A8;
+    border: none;
+    border-radius: 1em;
+    padding: 10px;
+    flex: 0 0 calc(20% - 20px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: default;
+}
+
+.word>:first-child {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+button.Delete {
+    padding: 5pt 15pt;
+}
+
+.goBack {
+    margin-left: 5vw;
+}
+
+@media (max-width: 1600px) {
+    .word {
+        flex: 0 0 calc(25% - 20px);
+    }
+    
+}
+
+@media (max-width: 1200px) {
+    .word {
+        flex: 0 0 calc(33.333% - 20px);
+    }
+    
+}
+
+@media (max-width: 960px) {
+    .word {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .word {
+        flex: 0 0 calc(100% - 20px);
+    }
+}

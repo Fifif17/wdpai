@@ -1,44 +1,48 @@
 <?php
-session_start();
-
 include_once("includes/visualComponents/beforeContent.php");
 
-// $db = new Database();
-// $stmt = $db->connect()->prepare('SELECT * FROM users');
-// $stmt->execute();
-
-// $val = $stmt->fetchAll();
-
-// print_r($val);
-
 if (isset($_SESSION['uid'])) {
-    echo $_SESSION['uid'];
-}
-if (isset($_SESSION['admin'])) {
-    echo $_SESSION['admin'];
+    echo '<script defer>';
+    echo 'var uid = ' . json_encode($_SESSION['uid']) . ';';
+    echo '</script>';
+} else {
+    echo '<script defer>';
+    echo 'var uid = -1;';
+    echo '</script>';
 }
 ?>
 
-<script type="text/javascript" src="includes/js/setHistory.js" defer></script>
+<script type="text/javascript" src="includes/js/sets.js" defer></script>
 <script type="text/javascript" src="includes/js/search.js" defer></script>
 
 
 <?php
 if (isset($_SESSION['admin'])) {
     echo "<div class='addSet'>";
-    echo "<button>Add Set</button>";
+    echo "<button class='addElement' onclick='window.location.href=\"addSet\"'>Add Set</button>";
     echo "</div>";
 }
 ?>
+<center>
+    <div class="messages">
+        <?php
+            if(isset($_SESSION['messages'])){
+                foreach($_SESSION['messages'] as $message) {
+                    echo $message[0];
+                }
+            }
+            unset($_SESSION['messages']);
+        ?>
+    </div>
+    <br><br>
+</center>
 
 <div class="searchBar">
     <input id="searchbar" placeholder="Search" oninput="searchSets()">
 </div>
 
 
-
 <div class="setContainer">
-    <!-- <?php var_dump($sets)?> -->
     <?php foreach ($sets as $set) : ?>
         <div class="wordSet">
             <span id="set_id" hidden><?= $set->getId(); ?></span>
@@ -47,17 +51,12 @@ if (isset($_SESSION['admin'])) {
             <span><?= $set->getWordCount() ?> <?= ($set->getWordCount() > 1) ? 'words' : 'word' ?></span>
             <?php if (isset($_SESSION['admin'])) : ?>
                 <div class="delSet">
-                    <button class="Delete">Delete</button>
+                    <button class="Delete" dataSetId="<?= $set->getId(); ?>">Delete</button>
                 </div>
             <?php endif; ?>
         </div>
     <?php endforeach; ?>
 </div>
-
-
-<script>
-    var uid = <?php echo json_encode($_SESSION['uid']); ?>;
-</script>
 
 
 <?php

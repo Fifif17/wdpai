@@ -14,5 +14,10 @@ Routing::get('logout', 'SecurityController');
 Routing::get('addProject', 'ProjectController');
 Routing::get('insertUserHistory', 'SetController');
 Routing::get('searchSets', 'SetController');
+Routing::get('setPage', 'SetController');
+Routing::get('addSet', 'SetController');
+Routing::get('addWord', 'SetController');
+Routing::get('removeSet', 'SetController');
+Routing::get('removeWord', 'SetController');
 
 Routing::run($path);
