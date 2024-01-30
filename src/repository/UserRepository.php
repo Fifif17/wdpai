@@ -78,7 +78,7 @@ class UserRepository extends Repository {
     }
 
 
-    public function getUid($email): int {
+    public function getUid($email) {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM users WHERE email = :email
         ');
@@ -87,7 +87,16 @@ class UserRepository extends Repository {
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $user['id_user'];
+        $result = $user['id_user'];
+
+        if ($user['id_user_type'] == 1) {
+            $result = [
+                'id_user' => $user['id_user'],
+                'id_user_type' => $user['id_user_type'],
+            ];
+        }
+
+        return $result;
     }
 }
 

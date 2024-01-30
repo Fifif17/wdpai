@@ -1,8 +1,10 @@
 <?php
-session_start();
+// session_start();
 
 include_once("includes/visualComponents/beforeContent.php");
 ?>
+
+<script type="text/javascript" src="includes/js/setHistory.js" defer></script>
 
 <center>
     <div class="logoutContainer">
@@ -10,11 +12,24 @@ include_once("includes/visualComponents/beforeContent.php");
     </div>
 </center>
 
-<div>
-    <h1>HISTORY</h1>
-    <div>placeholder history</div>
+<h1>HISTORY</h1>
+<div class="setContainer">
+    <?php
+        foreach ($sets as $set) : ?>
+        
+            <div class="wordSet">
+                <span id="set_id" hidden><?= $set->getId(); ?></span>
+                
+                <img src="<?= $set->getImage(); ?>">
+                <h1><?= $set->getName(); ?></h1>
+                <span><?= $set->getWordCount() ?> <?= ($set->getWordCount() > 1) ? 'words' : 'word' ?></span>
+            </div>
+        <?php endforeach; ?>
 </div>
 
+<script>
+    var uid = <?php echo json_encode($_SESSION['uid']); ?>;
+</script>
 
 <?php
 include_once("includes/visualComponents/afterContent.php");

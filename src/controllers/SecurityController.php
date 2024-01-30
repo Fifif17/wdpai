@@ -36,7 +36,13 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => ['User with this email doesn\'t exist']]);
         }
 
-        $_SESSION['uid'] = $this->userRepository->getUid($email);
+        $result = $this->userRepository->getUid($email);
+        if (is_array($result)) {
+            $_SESSION['uid'] = $result['id_user'];
+            $_SESSION['admin'] = $result['id_user_type'];
+        } else {
+            $_SESSION['uid'] = $result;
+        }  
 
         return $this->redirectTo('mainPage');
     }

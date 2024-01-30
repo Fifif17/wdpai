@@ -25,6 +25,12 @@ class AppController {
     }
 
 
+    protected function isAdmin() : bool {
+        session_start();
+        return isset($_SESSION['admin']);
+    }
+
+
     protected function render(string $template = null, array $variables = []) {
         $templatePath = 'includes/views/'.$template.'.php';
         $output = 'File not found!';
