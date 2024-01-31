@@ -211,6 +211,59 @@ class SetController extends AppController {
         return $this->redirectTo('mainPage');
     }
 
+
+    public function learnPanel() {
+        $isAdmin = false;
+        if ($this->isAdmin()) {
+            $isAdmin = true;
+        }
+
+        $set_id = $_GET['id'];
+        
+        $set = $this->setRepository->getSetbyId($set_id);
+        $words = $set->getWords();
+
+        if (!isset($_SESSION['currentWordIndex'])) {
+            $_SESSION['currentWordIndex'] = 0;
+            $_SESSION['unknownWords'] = [];
+        }
+    
+        $currentWordIndex = $_SESSION['currentWordIndex'];
+    
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['csrfToken']) && $_POST['csrfToken'] === $_SESSION['csrfToken']) {
+                if (isset($_POST['iDontKnow'])) {
+                    $_SESSION['unknownWords'][] = $words[$currentWordIndex];
+                }
+        
+                $currentWordIndex++;
+        
+                if ($currentWordIndex >= count($words)) {
+                    $this->message[] = "Finished learning";
+                    unset($_SESSION['currentWordIndex']);
+                    $unknownWords[] =  $_SESSION['unknownWords'];
+                    unset($_SESSION['unknownWords']);
+                    
+                    return $this->redirectTo('setPage?id=' . $set_id, ['messages' => $this->message, 'unknown' => $unknownWords]);
+                    exit();
+                }
+            }
+        }
+        $_SESSION['currentWordIndex'] = $currentWordIndex;
+        
+        return $this->render('learnPanel', ['words' => $words, 'currentWordIndex' => $currentWordIndex, 'wordCount' => $set->getWordCount()]);
+    }
+
+
+    public function unloadLearnPanel() {
+        $isAdmin = false;
+        if ($this->isAdmin()) {
+            $isAdmin = true;
+        }
+        unset($_SESSION['currentWordIndex']);
+        unset($_SESSION['unknownWords']);
+    }
+
     
     private function validate(array $file): bool {
         if ($file['size'] > self::MAX_FILE_SIZE) {

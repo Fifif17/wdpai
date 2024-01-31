@@ -5,7 +5,6 @@ class Word {
     private $word_pl;
 
 
-
     public function __construct($word_en, $word_pl) {
         $this->word_en = $word_en;
         $this->word_pl = $word_pl;

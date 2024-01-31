@@ -15,10 +15,12 @@ include_once("includes/visualComponents/beforeContent.php");
                 echo "<button class='addElement goBack' onclick='window.location.href=\"addWord?id={$set->getId()}\"'>Add Word</button>";
             }
         ?>
-        <button class="goBack" onclick="window.history.back();">Go back</button>
+        <button class="goBack" onclick="window.location.href='mainPage';">Go back</button>
     </div>
     <div class="actions">
-        <button id="learn">START LEARNING</button>
+        <?php if ($set->getWordCount() > 0) : ?>
+            <button id="learn" onclick="window.location.href='learnPanel?id=<?= $set->getId(); ?>'">START LEARNING</button>
+        <?php endif; ?>
         <p><?= $set->getWordCount() ?> <?= ($set->getWordCount() != 1) ? 'words' : 'word' ?></p>
     </div>
 </div>
@@ -26,9 +28,17 @@ include_once("includes/visualComponents/beforeContent.php");
 <center>
     <div class="messages">
         <?php
-            if(isset($_SESSION['messages'])){
-                foreach($_SESSION['messages'] as $message) {
-                    echo $message[0];
+            if(isset($_SESSION['messages']['messages'])){
+                foreach($_SESSION['messages']['messages'] as $message) {
+                    echo $message . "<br>";
+                }
+            }
+            if(isset($_SESSION['messages']['unknown'])){
+                if ($_SESSION['messages']['unknown'][0]) {
+                    echo "<h2>You still need to work on these:</h2><br>";
+                    foreach($_SESSION['messages']['unknown'][0] as $message) {
+                        echo $message->getEn() . " ; " . $message->getPl() . "<br>";
+                    }
                 }
             }
             unset($_SESSION['messages']);

@@ -1,0 +1,68 @@
+.learnContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.learnWords {
+    background-color: #4D73A8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+}
+
+.learnWords span {
+    font-size: 5em;
+}
+
+.buttonContainer {
+    width: 100%;
+}
+
+.learnButtonContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.learnButtonContainer button {
+    width: 100%;
+    margin: 50px;
+}
+
+.visible {
+    display: inline;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .learnWords span {
+        font-size: 4em;
+    }
+
+    .learnButtonContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 450px) {
+    .learnWords span {
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 350px) {
+    .learnWords span {
+        font-size: 2em;
+    }
+}
