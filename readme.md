@@ -1,20 +1,65 @@
-PLACEHOLDER README
+# Fiszlet
 
-STRONA Z FISZKAMI ANGIELSKI:
-- menu górne: wybór języków(?) (sticky menu? przycisk z drop-down list?)
-- różne zestawy fiszek - słówka na dział - chyba jako lista (divy) linków na stronie, z jakimś może zdj po lewej do działu (najechanie na zdj - nazwa działu) - responsywność - zmniejsza się wielkość divów, do maksymalnie samego zdj, wtedy tu przydaje się ten alt tekst
-- w tych divach też ilość słówek i guess
-- max ilość zestawów na stronie? jak się przekroczy ładuje od razu więcej? może kolejna strona? po prostu dłuuuuga strona?
-- WYBÓR: jak kliknie się w zestaw (podstrona), to albo:
-    - od razu leci do nauki
-    - lista wszystkich słówek, z przyciskiem rozpocznij naukę -> nauka (popup window? -> close button prawy górny wraca do listy)
-      lista w sumie op, łatwo można pokazać responsywność strony, np og 3 kolumny ze słówkami - zmniejsza się do 2 i 1
-- pewnie jakiś flexbox/popup - kontrast z tłem OG strony - gdzie jest ładny prostokąt - kontrast z flexboxem/popupem - ze słówkiem i:
-    - przyciski: obrót fiszki, umiem, nie umiem
-    - ew: obrót fiszki na kliknięciu w nią, zamiast w przycik pod spodem - znaleźć projekt z technikum
-- kliknięcie "nie umiem" -> tasuje się z powrotem do listy + shuffle całości
-- czyli tak właściwie: 2 listy na zestaw
+Web application made for classes "Wstęp Do Projektowania Aplikacji Internetowych" on the Cracow University of Technology.
+
+Application is a collection of sets of flashcards, containing English-Polish translation of words about various subjects.
+
+Unlogged Users can only browse the sets of flashcards.
+Logged in Users also have the access to their history.
+Users with Admin privilages can create their own sets of flashcards.
 
 
-NICE TO HAVE:
-- podłączyć tts do słówek -> jeszcze lepiej wyćwiczyć jakiś model głosowy do tego xdd
+## Table of contents
+- Application
+- Requirements
+- Installation
+- Maintainers
+
+
+## Application
+#### Unlogged
+![Unlogged](doc/readmeImages/unlogged.png)
+
+#### Logged in
+![Logged in ](doc/readmeImages/logged.png)
+
+#### History
+![History](doc/readmeImages/history.png)
+
+#### Admin
+![Admin](doc/readmeImages/admin.png)
+
+#### Set view of Admin
+![Set view of Admin](doc/readmeImages/setAdmin.png)
+
+
+## Requirements
+
+This app requires following frameworks and modules:
+- [Docker container](https://www.docker.com)
+
+
+## Installation
+Deploy and run application inside the docker container using this command:
+ `docker-compose -f docker-compose.yml up --build`
+
+Then you need to configure a file "config.php":
+
+```
+<?php
+
+class Config {
+    public static $dbHost = '';
+    public static $dbUser = '';
+    public static $dbPass = '';
+    public static $dbName = '';
+    public static $dbPort = ;
+}
+
+?>
+```
+
+
+## Maintainers
+
+- Filip Mysior - [github](https://www.github.com/Fifif17)
